@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ./bin/node
+    container_name: 'node'
+    restart: 'always'
+    links:
+      - pgsql
+    ports:
+      - "${HOST_MACHINE_PROD_PORT}:3000"
+      - "${HOST_MACHINE_TEST_PORT}:3333"
+    volumes:
+      - ${DOCUMENT_ROOT-../}:/usr/app
+  pgsql:
+    build:
+      context: "./bin/${DATABASE}"
+    container_name: 'pgsql'
+    restart: 'always'
+    ports:
+      - "${HOST_MACHINE_DATABASE_PORT}:5432"
+    volumes:
+      - ${DATABASE_DATA_DIR-/data/pgsql}:/var/lib/postgresql/data
+      - ${DATABASE_LOG_DIR-./logs/pgsql}:/var/log/postgresql
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_DATABASE}
+  pgadmin2:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "melqui@b2tech.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "b2tech"
+    ports:
+      - "${PGADMIN_PGSQL_PORT-8080}:80"
+    links:
+      - pgsql
+  redis:
+    container_name: 'cl-redis'
+    image: redis:latest
+    ports:
+      - "${HOST_MACHINE_REDIS_PORT}:6379"
