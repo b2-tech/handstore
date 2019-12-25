@@ -6,8 +6,16 @@ class UserSchema extends Schema {
 		this.create('users', table => {
 			table.increments();
 			table.string('name').notNullable();
-			table.string('company');
-			table.string('instagram');
+			table
+				.integer('companie_id')
+				.unsigned()
+				.references('id')
+				.inTable('companies')
+				.onUpdate('CASCADE');
+			table
+				.enu('permission', [1, 2])
+				.defaultTo(1)
+				.notNullable();
 			table
 				.string('email')
 				.notNullable()
