@@ -1,5 +1,5 @@
 const { test, trait } = use('Test/Suite')('Esqueceu a Senha');
-const { subHours, format } = require('date-fns');
+const { subHours, subMinutes, format } = require('date-fns');
 
 const Mail = use('Mail');
 const Hash = use('Hash');
@@ -70,7 +70,10 @@ test('Não poder resetar a senha depois de 2 horas', async ({ client }) => {
 
 	await user.tokens().save(userToken);
 
-	const dateWithSub = format(subHours(new Date(), 2), 'yyyy-MM-dd HH:ii:ss');
+	const dateWithSub = format(
+		subMinutes(subHours(new Date(), 2), 10),
+		'yyyy-MM-dd HH:ii:ss'
+	);
 
 	await Database.table('tokens')
 		.where('token', userToken.token)
