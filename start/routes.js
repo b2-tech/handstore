@@ -15,8 +15,17 @@
 const Route = use('Route');
 
 Route.post('/sessions', 'SessionController.store').validator('Session');
+
 Route.post('/forgot', 'ForgotPasswordController.store').validator('Forgot');
 Route.post('/reset', 'ResetPasswordController.store').validator('Reset');
+
+Route.group(() => {
+	Route.get('/companies', 'CompanyController.index');
+	Route.get('/companies/:id', 'CompanyController.show');
+	Route.post('/companies', 'CompanyController.store').validator('Company');
+	Route.put('/companies/:id', 'CompanyController.update').validator('Company');
+	Route.delete('/companies/:id', 'CompanyController.destroy');
+}).middleware('auth');
 
 Route.get('/', () => {
 	return { greeting: 'Hello world in JSON' };

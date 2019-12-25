@@ -28,3 +28,11 @@ Factory.blueprint('App/Models/Token', (faker, i, data = {}) => {
 		...data,
 	};
 });
+
+Factory.blueprint('App/Models/Company', (faker, i, data = {}) => {
+	return {
+		name: faker.name(),
+		cnpj: faker.integer({ length: 14 }),
+		...data,
+	};
+});
