@@ -33,8 +33,12 @@ class User extends Model {
 		return this.hasMany('App/Models/Token');
 	}
 
-	company() {
+	companies() {
 		return this.belongsTo('App/Models/Company');
+	}
+
+	getSection(permission) {
+		return Number(permission);
 	}
 }
 

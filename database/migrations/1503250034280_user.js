@@ -5,13 +5,13 @@ class UserSchema extends Schema {
 	up() {
 		this.create('users', table => {
 			table.increments();
-			table.string('name').notNullable();
 			table
-				.integer('companie_id')
+				.integer('company_id')
 				.unsigned()
 				.references('id')
 				.inTable('companies')
 				.onUpdate('CASCADE');
+			table.string('name').notNullable();
 			table
 				.enu('permission', [1, 2])
 				.defaultTo(1)

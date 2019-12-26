@@ -25,6 +25,12 @@ Route.group(() => {
 	Route.post('/companies', 'CompanyController.store').validator('Company');
 	Route.put('/companies/:id', 'CompanyController.update').validator('Company');
 	Route.delete('/companies/:id', 'CompanyController.destroy');
+
+	Route.get('/users', 'UserController.index');
+	Route.get('/users/:id', 'UserController.show');
+	Route.post('/users', 'UserController.store').validator('User');
+	Route.put('/users/:id', 'UserController.update').validator('User');
+	Route.delete('/users/:id', 'UserController.destroy');
 }).middleware('auth');
 
 Route.get('/', () => {
