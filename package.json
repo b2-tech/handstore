@@ -1,8 +1,8 @@
 {
-  "name": "adonis-api-app",
+  "name": "handstore-api",
   "version": "4.1.0",
   "adonis-version": "4.1.0",
-  "description": "Adonisjs boilerplate for API server with pre-configured JWT",
+  "description": "API da aplicação HandStore",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -10,9 +10,11 @@
   },
   "keywords": [
     "adonisjs",
-    "adonis-app"
+		"adonis-app",
+		"store",
+		"REST"
   ],
-  "author": "",
+  "author": "Dev TEAM - B2Tech",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
