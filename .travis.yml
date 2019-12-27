@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - node
+  - 12.6.0
+sudo: false
+install:
+  - yarn install
+after_script:
+  - yarn run test
