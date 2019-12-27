@@ -5,5 +5,5 @@ node_js:
 sudo: false
 install:
   - yarn install
-after_script:
-  - yarn run test
+# after_script:
+#   - yarn run test
