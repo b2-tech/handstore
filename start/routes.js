@@ -31,6 +31,12 @@ Route.group(() => {
 	Route.post('/users', 'UserController.store').validator('User');
 	Route.put('/users/:id', 'UserController.update').validator('User');
 	Route.delete('/users/:id', 'UserController.destroy');
+
+	Route.get('/products', 'ProductController.index');
+	Route.get('/products/:id', 'ProductController.show');
+	Route.post('/products', 'ProductController.store');
+	Route.put('/products/:id', 'ProductController.update');
+	Route.delete('/products/:id', 'ProductController.destroy');
 }).middleware('auth');
 
 Route.get('/', () => {

@@ -2,9 +2,9 @@
 const Model = use('Model');
 
 class Product extends Model {
-	// users() {
-	// 	return this.hasMany('App/Models/User');
-	// }
+	product() {
+		return this.hasMany('App/Models/Product');
+	 }
 }
 
 module.exports = Product;
