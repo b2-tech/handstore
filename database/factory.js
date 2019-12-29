@@ -38,3 +38,13 @@ Factory.blueprint('App/Models/Company', (faker, i, data = {}) => {
 		...data,
 	};
 });
+
+Factory.blueprint('App/Models/Product', (faker, i, data = {}) => {
+	return {
+		product: faker.string(),
+		codigo: faker.string(),
+		price: faker.integer({ length: 3}),
+		...data,
+	};
+});
+
